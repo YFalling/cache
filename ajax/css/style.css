@@ -33,7 +33,7 @@ body{ -webkit-overflow-scrolling: touch; position: relative; width: 100%; height
 	width: 240px;
 	height: 100%;
 	top: 0;
-	left: 0;
+	left: -260px;
 	z-index: 99999;
 	overflow: hidden;
 }
