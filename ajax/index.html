@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>加载XML</title>
+<title>Account</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="editplus" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
 <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
 
-<button>加载</button>
-<div id="load"></div>
+	<div class="left_bar_layer"></div>
+
+	<div id="wrapper">
+	
+		<div id="top_bar"></div>
+		<div id="menu_logo">
+			<div class="menu" style="background:url('img/menu-icon.png') no-repeat center center; background-size:cover;"></div>
+			<div class="logo"><b>Y.FALLING</b></div>
+		</div>
+	
+		<div id="left_bar">
+			<ul id="item">
+				<li class="all_open"><p>全部显示</p></li>
+				<li class="btn_load"><p>加载</p></li>
+			</ul>
+		</div>
+		<div id="container">
+
+			<div id="load"></div>
+			
+		</div>
+		
+		
+	</div>
 
 <!-- 引入JS文件 -->
 <script src="./js/jquery.js"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	$(".menu").click(function(){
+		$("#left_bar").css("left","0");
+		$(".left_bar_layer").css("height","100%");
+		$("#menu_logo").css("border-bottom","1px solid rgba(0,0,0,0.2)");
+		$("#menu_logo").css("background","#fff");
+	})
+	
+	$(".left_bar_layer").click(function(){
+		$("#left_bar").css("left","-260px");
+		$(".left_bar_layer").css("height","0");
+		$("#menu_logo").css("border-bottom","0");
+		$("#menu_logo").css("background","none");
+	})
+})
+</script>
+
 <script type="text/javascript">
 $(function(){
-$("button").click(function(){
+$(".all_open").click(function(){
 	$.ajax({
 		url:'xml/ajax.xml',
 		type: 'GET',
@@ -32,22 +74,24 @@ $("button").click(function(){
 			var frag=$("<ul/>");
 
 			//遍历所有student节点
-			$(xml).find("student").each(function(i){
+			$(xml).find("google").each(function(i){
 
-				//获取id节点
-				var id=$(this).children("id"),
-				//获取节点文本
-				id_value=id.text(),
+				//获取id节点,获取节点文本
+				var email=$(this).children("email"),
+				email_value=email.text(),
 
-				name=$(this).children("name"),
+				account=$(this).children("account"),
+				account_value=account.text(),
+
+				password=$(this).children("password"),
+				password_value=password.text(),
 				
 				//获取student下的email属性。
 				email=$(this).attr("email");
 				
-				
-
 				//构造HTML字符串，通过append方法添加进之前建立代码片段
-				frag.append("<li>"+id_value+" - "+email+" - "+name+"</li>");
+				frag.append("<li class='c_li'><div class='box_title'><p>邮箱: "+email_value+"</P></div><div class='box_cont'><p>账号: "+account_value+"</br>密码: "+password_value+"</p></div></li>");
+				
 			});
 
 		//最后得到的frag添加进HTML文档中

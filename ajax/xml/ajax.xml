@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<stulist>
-  <student email="1@1.com">
-    <name>zhangsan</name>
-    <id>1</id>
-  </student>
+<account>
+  <google>
+    <email>yufalling@gmail.com</email>
+    <account>Y.FALLING</account>
+    <password>The Normal</password>
+  </google>
+  <google>
+    <email>a4studio.milan@gmail.com</email>
+    <account>A4 STUDIO</account>
+    <password>The Normal</password>
+  </google>
+  
   <student email="2@2.com">
     <name>lisi</name>
     <id>2</id>
   </student>
-</stulist>
+</account>
