@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
+<link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+
+<!-- 背景高斯模糊 -->
+<div class="bg_layer">
+	<div class="bg_layer_img" style="background:url('./img/bg.jpg') no-repeat center center;background-size:cover;"></div>
+</div>
+<div id="top_bar">
+	<div id="menu_logo">
+		<div class="menu" style="background:url('img/menu-icon.png') no-repeat center center; background-size:cover;"></div>
+		<div class="logo"><b>Y.FALLING</b></div>
+	</div>
+</div>
+<div id="sidebar" style="background:url('./img/bg.jpg') no-repeat center center;background-size:cover;">
+	<div class="t_h1">请输入账号类型</div>
+	<input onkeydown="getValue();" type="text" name="name" id="search"/>
+	<div id="target"></div>
+	<div class="btn_load">加载</div>
+	<div class="copyright">COPYRIGHT © 2017 A4STUDIO</div>
+</div>
+<div class="sidebar_layer"></div>
+
+<div id="wrapper">
+	<div id="container">
+		<div id="load"></div>
+	</div>
+</div>
+
+<!-- 引入JS文件 -->
+<script src="./js/jquery.js"></script>
+<script type="text/javascript">
+// 赋值
+function getValue(){
+	//获取id为nameId的节点
+	var inputEle = document.getElementById("search");
+	var targetEle =document.getElementById("target");
+	//获取value
+	var a = inputEle.value;
+	targetEle.innerHTML=a;
+}
+// 切换列表
+$(function(){
+	$(".menu").click(function(){
+		$("#sidebar").css("display","block");
+		$(".sidebar_layer").css("display","block");
+	})
+	
+	$(".sidebar_layer").click(function(){
+		$("#sidebar").css("display","none");
+		$(".sidebar_layer").css("display","none");
+	})
+})
+</script>
+<script type="text/javascript">
+$(".btn_load").click(function(){
+$(function(){
+	$.ajax({
+		url:'xml/ajax.xml',
+		type: 'POST',
+		dataType: 'xml',
+		timeout: 1000,
+		cache: false,
+		error: function(xml){
+			alert('加载XML文档出错');
+		},
+		success: function(xml){
+			var ivalue = $("#target").text();
+			var frag=$("<ul/>");
+			$(xml).find(ivalue).each(function(i){
+				var email=$(this).children("email").text(),
+				account=$(this).children("account").text(),
+				password=$(this).children("password").text();
+				frag.append("<li><div class='box_title'><p>邮箱: "+email+"</P></div><div class='box_cont'><p>账号: "+account+"</br>密码: "+password+"</p></div></li>");
+			});
+		frag.appendTo("#load");
+		}
+	  
+	});
+});
+});
+</script>
+
+</body>
+</html>

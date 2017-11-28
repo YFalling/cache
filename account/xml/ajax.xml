@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<account>
+  <google>
+    <email>yufalling@gmail.com</email>
+    <account>Y.FALLING</account>
+    <password>The Normal</password>
+  </google>
+  <google>
+    <email>a4studio.milan@gmail.com</email>
+    <account>A4 STUDIO</account>
+    <password>The Normal</password>
+  </google>
+  
+  <git>
+    <email>aaaaaaaaaa@gmail.com</email>
+    <account>aaaaaaaaaa</account>
+    <password>aaaaaaaaaa</password>
+  </git>
+  <git>
+    <email>bbbbbbbbb@gmail.com</email>
+    <account>bbbbbbbbb</account>
+    <password>bbbbbbbbb</password>
+  </git>
+</account>
