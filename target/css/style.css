@@ -1,0 +1,188 @@
+*{ margin: 0; padding: 0;}
+a{ text-decoration: none; color: #000;}
+ul{ list-style: none;}
+html{ position: relative; width: 100%; height: 100%; margin: 0 auto; font-family: Arial, Microsoft Yahei, 黑体;}
+body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+/*  背景高斯模糊  */
+.bg_layer{ position: fixed; width: 100%; height: 100%;}
+.bg_layer_img{
+	position: relative;
+	width: 110%;
+	height: 110%;
+	left: -5%;
+	top: -5%;
+	z-index: 0;
+}
+
+
+#target{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+#target_btn{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	line-height: 2.6rem;
+	text-align: center;
+	color: #fff;
+	background: rgba(0,0,0,0.6);
+}
+#target_box{
+	position: relative;
+	width: 100%;
+	height: 7rem;
+	display: none;
+	-webkit-animation: ani_target 1s ease;
+	animation: ani_target 1s ease;
+}
+	@-webkit-keyframes ani_target{
+		0%{ -webkit-opacity: 0;}
+		100%{ -webkit-opacity: 1;}
+	}
+	@keyframes ani_target{
+		0%{ opacity: 0;}
+		100%{ opacity: 1;}
+	}
+
+.t_center{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.t_c_layer{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	-webkit-animation: ani_t_center 1s ease;
+	animation: ani_t_center 1s ease;
+}
+	@-webkit-keyframes ani_t_center{
+		0%{ height: 0;}
+		100%{ height: 100%;}
+	}
+	@keyframes ani_t_center{
+		0%{ height: 0;}
+		100%{ height: 100%;}
+	}
+	
+.t_top, .t_bottom{
+	position: relative;
+	width: 100%;
+	float: left;
+}
+.t_top{
+	height: 1.6rem;
+}
+.t_bottom{
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+	font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+	overflow: hidden;
+}
+.t_message{
+    position: relative;
+    width: 13rem;
+    top: -0.8rem;
+    margin: 0 auto;
+    line-height: 2.6rem;
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    background: rgba(255,0,0,0.8);
+	overflow: hidden;
+	-webkit-animation: ani_t_message 1s ease;
+	animation: ani_t_message 1s ease;
+}
+	@-webkit-keyframes ani_t_message{
+		0%{ width: 2rem;}
+		100%{ width: 13rem;}
+	}
+	@keyframes ani_t_message{
+		0%{ width: 2rem;}
+		100%{ width: 13rem;}
+	}
+
+.t_line{
+    position: absolute;
+    width: 50%;
+    height: 1px;
+	background: rgba(255,255,255,0.8);
+	-webkit-animation: ani_t_line 0.8s linear;
+	animation: ani_t_line 0.8s linear;
+}
+	@-webkit-keyframes ani_t_line{
+		0%{ width: 0;}
+		100%{ width: 50%;}
+	}
+	@keyframes ani_t_line{
+		0%{ width: 0;}
+		100%{ width: 50%;}
+	}
+	
+.t_line_a, .t_line_b{
+	position: relative;
+	width: 50%;
+    height: 1px;
+    top: -2.2rem;
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 359px){ html{ font-size: 13px;}}
+@media only screen and (min-width: 360px) and (max-width: 374px){ html{ font-size: 14px;}}
+@media only screen and (min-width: 375px) and (max-width: 413px){ html{ font-size: 16px;}}
+@media only screen and (min-width: 414px) and (max-width: 736px){ html{ font-size: 16px;}}
+@media only screen and (min-width: 736px){ html{ font-size: 16px;}}
