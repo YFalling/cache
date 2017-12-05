@@ -12,10 +12,33 @@ a {color:#0078ff;}
 
 <body onLoad="init()">
 
-<div style="width: 300px;height: 100px;position: absolute;left: 20%;top: 10%;background: rgba(0,0,0,0.5);"></div>
+<div style="width:300px;height:100px;position:absolute;left:10%;top:10%;background:rgba(0,0,0,0.5);color:#fff;">
+alpha:<span id="alpha"></span><br/>
+beta:<span id="beta"></span><br/>
+gamma:<span id="gamma"></span><br/>
+</div>
 
 <script type="text/javascript" src="js/ThreeCanvas.js"></script>
 <script type="text/javascript" src="js/Snow.js"></script>
+<script type="text/javascript">
+if(window.DeviceOrientationEvent){
+	window.addEventListener('deviceorientation', function(event){
+		var a = document.getElementById('alpha'),
+			b = document.getElementById('beta'),
+			g = document.getElementById('gamma'),
+			alpha = event.alpha,
+			beta = event.beta,
+			gamma = event.gamma;
+
+		a.innerHTML = Math.round(alpha);
+		b.innerHTML = Math.round(beta);
+		g.innerHTML = Math.round(gamma);
+		  
+	}, false);
+}else{
+	document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+}
+</script>
 <script type="text/javascript">
 	var SCREEN_WIDTH = window.innerWidth;
 	var SCREEN_HEIGHT = window.innerHeight;
@@ -105,18 +128,12 @@ a {color:#0078ff;}
 				else if(z<-1000) z+=2000;
 			}
 		}
-		
-	window.addEventListener('deviceorientation', function(event) {
-		var alpha = event.alpha, beta = event.beta, gamma = event.gamma;
-		g = Math.round(gamma);
-	});
 
 		camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-		camera.position.y += ( g ) * 0.05;
+		camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
 		camera.lookAt(scene.position);
 
 		renderer.render(scene,camera);
-
 	}
 </script>
 
