@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
 <title>3D雪花飘落(h5 canvas)</title>
 <style type="text/css">
 body {background-color:#000044;background:url(images/bg.jpg) no-repeat center center;background-size:cover;margin:0px;overflow:hidden;}
@@ -11,8 +12,16 @@ a {color:#0078ff;}
 
 <body onLoad="init()">
 
+<div style="width: 300px;height: 100px;position: absolute;left: 20%;top: 10%;background: rgba(0,0,0,0.5);"></div>
+
 <script type="text/javascript" src="js/ThreeCanvas.js"></script>
 <script type="text/javascript" src="js/Snow.js"></script>
+<script type="text/javascript">
+// 监听事件 - 禁止移动
+document.querySelector('body').addEventListener('touchmove', function (ev) {
+    event.preventDefault();
+});
+</script>
 <script type="text/javascript">
 	var SCREEN_WIDTH = window.innerWidth;
 	var SCREEN_HEIGHT = window.innerHeight;
@@ -102,9 +111,16 @@ a {color:#0078ff;}
 				else if(z<-1000) z+=2000;
 			}
 		}
+if(window.DeviceOrientationEvent){
 
+	window.addEventListener('deviceorientation', function(event) {
+		var alpha = event.alpha, beta = event.beta, gamma = event.gamma;
+	}, false);
+}else{
+	document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+}
 		camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-		camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+		camera.position.y += ( gamma ) * 0.05;
 		camera.lookAt(scene.position);
 
 		renderer.render(scene,camera);
